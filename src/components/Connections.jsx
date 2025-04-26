@@ -14,6 +14,7 @@ const Connections = () => {
         withCredentials: true,
       });
       const { message } = res.data;
+
       setConnections(message);
       dispatch(addConnections(message));
     } catch (error) {

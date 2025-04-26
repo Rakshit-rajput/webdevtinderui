@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "react-router";
 
 const ConnectionCard = ({ connection }) => {
-  const { firstName, lastName, about } = connection;
+  const { firstName, lastName, about, _id } = connection;
   return (
     <>
       <div className="card bg-base-300 w-96 shadow-sm">
@@ -17,7 +18,9 @@ const ConnectionCard = ({ connection }) => {
           <h2 className="card-title">{`${firstName} ${lastName}`}</h2>
           <p>{about}</p>
           <div className="card-actions">
-            <button className="btn btn-primary">Chat now</button>
+            <Link to={`/chat/${_id}`}>
+              <button className="btn btn-primary">Chat now</button>
+            </Link>
           </div>
         </div>
       </div>
