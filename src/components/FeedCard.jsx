@@ -3,12 +3,25 @@ import React from "react";
 import { BASE_URL } from "../utils/constants";
 import { useDispatch } from "react-redux";
 import { removefeed } from "../utils/feedSlice";
+import { useNavigate } from "react-router-dom";
 
 const FeedCard = ({ user }) => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+  console.log(user);
   if (!user) return null;
 
-  const { firstName, lastName, age, gender, about, skills = [], _id } = user;
+  const {
+    firstName,
+    lastName,
+    age,
+    gender,
+    about,
+    skills = [],
+    _id,
+    image,
+  } = user;
+  // console.log("log for image" + image);
   const handleInterested = async () => {
     await axios.post(
       `${BASE_URL}/request/interested/${_id}`,
@@ -33,7 +46,8 @@ const FeedCard = ({ user }) => {
     <div className="card w-96 bg-base-200 shadow-lg hover:shadow-xl transition-shadow duration-300">
       <figure>
         <img
-          src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=600"
+          // src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=600"
+          src={image}
           alt="Profile"
           className="object-cover w-full h-48"
         />
@@ -64,6 +78,12 @@ const FeedCard = ({ user }) => {
           </button>
           <button className="btn btn-outline" onClick={handleIgnore}>
             Ignore
+          </button>
+          <button
+            onClick={() => navigate(`/viewprofile/${_id}`)}
+            className="btn btn-outline"
+          >
+            View Profile
           </button>
         </div>
       </div>

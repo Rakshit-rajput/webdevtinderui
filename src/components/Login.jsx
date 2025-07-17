@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import { useNavigate } from "react-router";
 import { BASE_URL } from "../utils/constants";
+import { Link } from "react-router-dom";
 const Login = () => {
   const [isSignUp, setIsSignUp] = useState(false);
   const [emailId, setEmailId] = useState("rak2@gmail.com");
@@ -25,7 +26,7 @@ const Login = () => {
           withCredentials: true,
         }
       );
-      // console.log(res);
+      console.log(res);
       dispatch(addUser(res.data));
       return Navigate("/");
     } catch (error) {
@@ -123,20 +124,19 @@ const Login = () => {
               Sign Up
             </button>
           )}
+          <Link to="/resetPassword">
+            <p class="transform text-center font-semibold text-gray-500 duration-300 hover:text-gray-300">
+              FORGOT PASSWORD?
+            </p>
+          </Link>
 
-          <a
-            href="#"
-            class="transform text-center font-semibold text-gray-500 duration-300 hover:text-gray-300"
-          >
-            FORGOT PASSWORD?
-          </a>
           {!isSignUp && (
             <p class="text-center text-lg">
               No account?
               <a
                 href="#"
                 class="font-medium text-indigo-500 underline-offset-4 hover:underline"
-                onClick={() => setIsSignUp(!isSignUp)}
+                onClick={() => Navigate("/register")}
               >
                 Create One
               </a>

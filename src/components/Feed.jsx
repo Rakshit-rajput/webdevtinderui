@@ -9,6 +9,7 @@ const Feed = () => {
   const [feedUsers, setFeedUsers] = useState([]);
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
+  // console.log(user);
   if (!user) {
     navigate("/login");
   }
@@ -19,6 +20,7 @@ const Feed = () => {
         withCredentials: true,
       });
 
+      console.log(res.data.data);
       setFeedUsers(res.data.data);
 
       dispatch(addFeed(res.data));

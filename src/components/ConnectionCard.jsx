@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router";
 
 const ConnectionCard = ({ connection }) => {
+  console.log(connection);
   const { firstName, lastName, about, _id } = connection;
   return (
     <>

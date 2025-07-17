@@ -9,6 +9,9 @@ import Feed from "./components/Feed";
 import Connections from "./components/Connections";
 import Requests from "./components/Requests";
 import Chat from "./components/Chat";
+import GetMail from "./components/signupcomps/GetMail";
+import ResetPassword from "./components/ResetPassword";
+import ViewProfile from "./components/ViewProfile";
 
 function App() {
   return (
@@ -19,10 +22,13 @@ function App() {
             <Route path="/" element={<Body />}>
               <Route path="/" element={<Feed />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<GetMail />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/connections" element={<Connections />} />
               <Route path="/requests" element={<Requests />} />
               <Route path="/chat/:toUserId" element={<Chat />} />
+              <Route path="/resetPassword" element={<ResetPassword />} />
+              <Route path="/viewprofile/:userId" element={<ViewProfile />} />
             </Route>
           </Routes>
         </BrowserRouter>

@@ -5,6 +5,8 @@ import { BASE_URL } from "../utils/constants";
 import axios from "axios";
 export const Navbar = () => {
   const user = useSelector((store) => store.user);
+  // console.log(user);
+  // console.log("log for image" + user.image);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handlelogout = async () => {
@@ -58,12 +60,7 @@ export const Navbar = () => {
               className="btn btn-ghost btn-circle avatar"
             >
               <div className="w-10 rounded-full">
-                {user && (
-                  <img
-                    alt="Tailwind CSS Navbar component"
-                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                  />
-                )}
+                {user && <img alt="profile" src={user.image} />}
               </div>
             </div>
             <ul
@@ -81,6 +78,9 @@ export const Navbar = () => {
               </li>
               <li>
                 <a onClick={handlelogout}>Logout</a>
+              </li>
+              <li>
+                <Link to={"/resetPassword"}>reset Password</Link>
               </li>
             </ul>
           </div>
